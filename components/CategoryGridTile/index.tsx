@@ -1,6 +1,6 @@
 import { Pressable, Text, View, ViewProps } from "react-native";
 
-import { CategoryModel } from "../../models/index";
+import { CategoryModel } from "models/index";
 
 interface CategoryGridTile extends ViewProps {
     title: CategoryModel['title'],

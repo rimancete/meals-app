@@ -1,7 +1,7 @@
 import { FlatList, ListRenderItemInfo } from "react-native";
-import { CATEGORIES } from "../../data";
-import { CategoryModel } from "../../models";
-import CategoryGridTile from "../../components/CategoryGridTile";
+import { CATEGORIES } from "data";
+import { CategoryModel } from "models";
+import CategoryGridTile from "components/CategoryGridTile";
 
 const renderItem = (itemData: ListRenderItemInfo<CategoryModel>) => {
   const { item } = itemData;
