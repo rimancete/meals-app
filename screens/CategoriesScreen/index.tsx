@@ -15,6 +15,7 @@ function CategoriesScreen() {
       data={CATEGORIES}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
+      numColumns={2}
     />
   );
 }
