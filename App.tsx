@@ -4,16 +4,25 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 
 import CategoriesScreen from "screens/CategoriesScreen/";
+import MealsOverviewScreen, {
+  MealsOverviewScreenParams,
+} from "screens/MealOverviewScreen";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  MealsCategories: undefined;
+  MealsOverview: MealsOverviewScreenParams;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <>
       <StatusBar style="dark" />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="MealsCategories" component={CategoriesScreen}/>
+        <Stack.Navigator initialRouteName="MealsCategories">
+          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

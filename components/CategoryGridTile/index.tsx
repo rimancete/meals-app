@@ -5,15 +5,18 @@ import {
   View,
   ViewProps,
   Platform,
+  GestureResponderEvent,
 } from "react-native";
 
 import { CategoryModel } from "models/index";
 
-interface CategoryGridTile extends ViewProps {
+interface CategoryGridTileProps extends ViewProps {
   title: CategoryModel["title"];
   color: CategoryModel["color"];
+  onPress: ((event: GestureResponderEvent) => void) | null | undefined;
 }
-function CategoryGridTile({ title, color }: CategoryGridTile) {
+
+function CategoryGridTile({ title, color, onPress }: CategoryGridTileProps) {
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -22,6 +25,7 @@ function CategoryGridTile({ title, color }: CategoryGridTile) {
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
+        onPress={onPress}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
           <Text style={styles.title}>{title}</Text>

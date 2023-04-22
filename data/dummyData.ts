@@ -1,4 +1,4 @@
-import { CategoryModel, MealModel } from "../models";
+import { CategoryModel, MealModel } from "models";
 
 export const CATEGORIES = [
   new CategoryModel("c1", "Italian", "#f5428d"),
