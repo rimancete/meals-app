@@ -1,45 +1,42 @@
-import {
-  FlatList,
-  ListRenderItemInfo,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { useLayoutEffect } from "react";
+import { FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native";
 
-import { MEALS } from "data";
+import { MEALS, CATEGORIES } from "data";
 import { MealModel } from "models";
-import { getLandscapeLayout } from "utils/index";
 import { useRoute } from "@react-navigation/native";
 import MealItem from "components/MealItem";
+import { MealsOverviewScreenNavigationProps } from "types";
 
 export interface MealsOverviewScreenParams {
   categoryId: string;
 }
-function MealsOverviewScreen() {
+
+function MealsOverviewScreen({
+  navigation,
+}: MealsOverviewScreenNavigationProps) {
   const { categoryId } = useRoute().params as MealsOverviewScreenParams;
 
   const mealsData = MEALS.filter(
     (item) => item.categoryIds.indexOf(categoryId) >= 0
   );
 
-  // const { height } = useWindowDimensions();
-  //   const isLandscape = getLandscapeLayout(height);
-
   const keyExtractor = (item: MealModel) => item.id;
-
-  // const gridColumns = () => isLandscape ? 3 : 2
 
   const renderItem = (itemData: ListRenderItemInfo<MealModel>) => {
     const { item } = itemData;
 
-    // const mealItemPressHandler = () => {
-    //   navigation.navigate("MealsOverview", {
-    //     categoryId: item.id,
-    //   });
-    // };
     return <MealItem meal={item} />;
   };
+
+  useLayoutEffect(() => {
+    const categoryTile = CATEGORIES.find(
+      (category) => category.id === categoryId
+    )?.title;
+
+    navigation.setOptions({
+      title: categoryTile || "",
+    });
+  }, [categoryId, navigation]);
 
   return (
     <View style={styles.container}>
@@ -47,8 +44,6 @@ function MealsOverviewScreen() {
         data={mealsData}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
-        // numColumns={gridColumns()}
-        // key={gridColumns()}
       />
     </View>
   );

@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { CategoryModel } from "models/index";
+import theme from "styles/theme";
 
 interface CategoryGridTileProps extends ViewProps {
   title: CategoryModel["title"];
@@ -47,11 +48,7 @@ const styles = StyleSheet.create({
     overflow: Platform.OS === "android" ? "hidden" : "visible",
 
     //ios shadow
-    backgroundColor: "white",
-    shadowColor: "black",
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
+    ...theme().ioShadow,
   },
   button: {
     flex: 1,
