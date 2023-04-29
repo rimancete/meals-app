@@ -14,6 +14,12 @@ function theme() {
         opacity: 0.5,
       },
     },
+    colors: {
+      secondary: {
+        light: "#e2b497",
+        dark: "#351401",
+      },
+    },
   };
 }
 export default theme;

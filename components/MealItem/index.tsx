@@ -6,14 +6,24 @@ import {
   Text,
   View,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import MealModel from "models/meal";
 import theme from "styles/theme";
+import { MealDetailScreenNavigationHookProps } from "types";
+import MealDetails from "components/MealDetails";
 
 interface MealItemProps {
   meal: MealModel;
 }
 function MealItem({ meal }: MealItemProps) {
+  const navigation = useNavigation<MealDetailScreenNavigationHookProps>();
+  const mealDetailPressHandler = () => {
+    navigation.navigate("MealDetail", {
+      mealId: meal.id,
+    });
+  };
+
   return (
     <View style={styles.mealItem}>
       <Pressable
@@ -21,21 +31,14 @@ function MealItem({ meal }: MealItemProps) {
         style={({ pressed }) =>
           pressed ? theme().pressableIOSRiple.buttonPressed : null
         }
+        onPress={mealDetailPressHandler}
       >
         <View style={styles.innerContainer}>
           <View>
             <Image source={{ uri: meal.imageUrl }} style={styles.image} />
             <Text style={styles.title}>{meal.title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.detailItem}>{meal.duration}</Text>
-            <Text style={styles.detailItem}>
-              {meal.complexity.toUpperCase()}
-            </Text>
-            <Text style={styles.detailItem}>
-              {meal.affordability.toUpperCase()}
-            </Text>
-          </View>
+          <MealDetails meal={meal} />
         </View>
       </Pressable>
     </View>
@@ -69,15 +72,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     margin: 8,
-  },
-  details: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 8,
-  },
-  detailItem: {
-    marginHorizontal: 4,
-    fontSize: 12,
   },
 });

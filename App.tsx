@@ -7,10 +7,15 @@ import CategoriesScreen from "screens/CategoriesScreen/";
 import MealsOverviewScreen, {
   MealsOverviewScreenParams,
 } from "screens/MealOverviewScreen";
+import MealDetailScreenScreen, {
+  MealDetailScreenParams,
+} from "screens/MealDetailScreen";
+import theme from "styles/theme";
 
 export type RootStackParamList = {
   MealsCategories: undefined;
   MealsOverview: MealsOverviewScreenParams;
+  MealDetail: MealDetailScreenParams;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -23,7 +28,7 @@ export default function App() {
         <Stack.Navigator
           initialRouteName="MealsCategories"
           screenOptions={{
-            headerStyle: { backgroundColor: "#351401" },
+            headerStyle: { backgroundColor: theme().colors.secondary.dark },
             headerTintColor: "white",
             contentStyle: { backgroundColor: "#3f2f25" },
           }}
@@ -45,6 +50,7 @@ export default function App() {
             //   };
             // }}
           />
+          <Stack.Screen name="MealDetail" component={MealDetailScreenScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
