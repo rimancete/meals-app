@@ -6,7 +6,7 @@ import { RootStackParamList } from "App";
 export type CategoriesScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'MealsCategories'>;
 export type MealsOverviewScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'MealsOverview'>;
 export type MealDetailScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'MealDetail'>;
-export type MealDetailScreenNavigationHookProp = CompositeNavigationProp<
+export type MealDetailScreenNavigationHookProps = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'MealDetail'>,
   NativeStackNavigationProp<RootStackParamList>
 >;

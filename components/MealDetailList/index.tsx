@@ -10,8 +10,8 @@ function MealDetailList({ data }: MealDetailListProps) {
   return (
     <View>
       {data.map((value) => (
-        <View  style={styles.listItem}>
-          <Text style={styles.itemText} key={value}>{value}</Text>
+        <View key={value} style={styles.listItem}>
+          <Text style={styles.itemText}>{value}</Text>
         </View>
       ))}
     </View>
