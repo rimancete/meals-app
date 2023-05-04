@@ -7,6 +7,7 @@ import { MealDetailScreenNavigationProps } from "types";
 import MealDetails from "components/MealDetails";
 import SubtTitle from "components/SubTitle";
 import MealDetailList from "components/MealDetailList";
+import IconButton from "components/IconButton";
 
 export interface MealDetailScreenParams {
   mealId: string;
@@ -16,13 +17,22 @@ function MealDetailScreen({ navigation }: MealDetailScreenNavigationProps) {
   const { mealId } = useRoute().params as MealDetailScreenParams;
 
   const selectedMeal = MEALS.find((meal) => mealId === meal.id);
+
+  const headerButtonPressHandler = () => {
+    console.log('Pressed!')
+  }
+
+  const renderHeaderButton = () => <IconButton onPress={headerButtonPressHandler} />
+  
   useLayoutEffect(() => {
-    const mealTile = MEALS.find((category) => category.id === mealId)?.title;
+    // const mealTile = MEALS.find((category) => category.id === mealId)?.title;
 
     navigation.setOptions({
-      title: mealTile || "",
+      // title: mealTile || "",
+      title: "",
+      headerRight: renderHeaderButton
     });
-  }, [mealId, navigation]);
+  }, [mealId, navigation, headerButtonPressHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
