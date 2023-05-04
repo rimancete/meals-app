@@ -20,13 +20,13 @@ export type RootStackParamList = {
   MealDetail: MealDetailScreenParams;
 };
 
-export type DrawerStackParamList = {
+export type DrawerParamList = {
   MealsCategories: undefined;
   FavoriteScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const Drawer = createDrawerNavigator<DrawerStackParamList>();
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
 function DrawerNavigator() {
   return (
