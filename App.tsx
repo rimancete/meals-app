@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import CategoriesScreen from "screens/CategoriesScreen/";
 import MealsOverviewScreen, {
@@ -34,13 +35,35 @@ function DrawerNavigator() {
       screenOptions={{
         headerStyle: { backgroundColor: theme().colors.secondary.dark },
         headerTintColor: "white",
-        sceneContainerStyle: { backgroundColor: "#3f2f25" },
+        sceneContainerStyle: {
+          backgroundColor: theme().colors.secondary.medium,
+        },
+        drawerContentStyle: { backgroundColor: theme().colors.secondary.dark },
+        drawerInactiveTintColor: "#fafafa",
+        drawerActiveTintColor: theme().colors.secondary.dark,
+        drawerActiveBackgroundColor: theme().colors.secondary.xLight,
       }}
     >
-      <Drawer.Screen name="MealsCategories" component={CategoriesScreen} options={{
-        title: 'All Categories'
-      }} />
-      <Drawer.Screen name="FavoriteScreen" component={FavoriteScreen} />
+      <Drawer.Screen
+        name="MealsCategories"
+        component={CategoriesScreen}
+        options={{
+          title: "All Categories",
+          drawerIcon: ({ color, size }) => (
+            <MaterialIcons name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="FavoriteScreen"
+        component={FavoriteScreen}
+        options={{
+          title: "Favorites",
+          drawerIcon: ({ color, size }) => (
+            <MaterialIcons name="star" color={color} size={size} />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 }
@@ -55,7 +78,7 @@ export default function App() {
           screenOptions={{
             headerStyle: { backgroundColor: theme().colors.secondary.dark },
             headerTintColor: "white",
-            contentStyle: { backgroundColor: "#3f2f25" },
+            contentStyle: { backgroundColor: theme().colors.secondary.medium },
           }}
         >
           <Stack.Screen

@@ -16,7 +16,9 @@ function theme() {
     },
     colors: {
       secondary: {
+        xLight: "#e4baa1",
         light: "#e2b497",
+        medium: "#3f2f25",
         dark: "#351401",
       },
     },

@@ -25,7 +25,7 @@ function MealItem({ meal }: MealItemProps) {
   };
 
   return (
-    <View style={styles.mealItem}>
+    <View style={styles.gridItem}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) =>
@@ -48,7 +48,8 @@ function MealItem({ meal }: MealItemProps) {
 export default MealItem;
 
 const styles = StyleSheet.create({
-  mealItem: {
+  gridItem: {
+    flex: 1,
     margin: 16,
     borderRadius: 8,
     overflow: Platform.OS === "android" ? "hidden" : "visible",

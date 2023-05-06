@@ -55,6 +55,7 @@ function MealDetailScreen({ navigation }: MealDetailScreenNavigationProps) {
 
 const styles = StyleSheet.create({
   rootContainer: {
+    flex: 1,
     marginBottom: 32
   },
   image: {

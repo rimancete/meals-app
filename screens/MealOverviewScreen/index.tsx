@@ -1,11 +1,12 @@
 import { useLayoutEffect } from "react";
-import { FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native";
+import { FlatList, ListRenderItemInfo, StyleSheet, View, useWindowDimensions } from "react-native";
 
 import { MEALS, CATEGORIES } from "data";
 import { MealModel } from "models";
 import { useRoute } from "@react-navigation/native";
 import MealItem from "components/MealItem";
 import { MealsOverviewScreenNavigationProps } from "types";
+import { getLandscapeLayout } from "utils/index";
 
 export interface MealsOverviewScreenParams {
   categoryId: string;
@@ -14,6 +15,9 @@ export interface MealsOverviewScreenParams {
 function MealsOverviewScreen({
   navigation,
 }: MealsOverviewScreenNavigationProps) {
+  const { height } = useWindowDimensions();
+  const isLandscape = getLandscapeLayout(height);
+
   const { categoryId } = useRoute().params as MealsOverviewScreenParams;
 
   const mealsData = MEALS.filter(
@@ -21,6 +25,8 @@ function MealsOverviewScreen({
   );
 
   const keyExtractor = (item: MealModel) => item.id;
+
+  const gridColumns = () => (isLandscape ? 2 : 1);
 
   const renderItem = (itemData: ListRenderItemInfo<MealModel>) => {
     const { item } = itemData;
@@ -44,6 +50,9 @@ function MealsOverviewScreen({
         data={mealsData}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        numColumns={gridColumns()}
+        key={gridColumns()}
+  
       />
     </View>
   );

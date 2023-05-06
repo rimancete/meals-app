@@ -1,17 +1,18 @@
 
-# Guess The Number
+# Meals App
 
-Este projeto é um "mini-cardápio", para estudo / prática de conceitos relacionado a desenvolvimento mobile, especificamente React Native.
+Este projeto é um "Catálogo de receitas" demo, para estudo / prática de conceitos relacionados a navegação (com React Navigation), incluindo menus aninhados. E também questões mais avançadas de layout (tema, grids, orientação), utilizando React Native.
 
-<!-- ### Mobile Perspectiva:
-![nav](./docs/app.gif) -->
+### Mobile Perspectiva:
+![nav](./docs/app.gif)
 
 ## Bibliotecas utilizadas
 
-- expo - Framework mobile
+- expo - Framework React Native
+- React Navigator - Navegação / Menus
 
 # Instalando e rodando o projeto
-Antes de instalar/rodar o projeto, você pode precisar dos seguintes itens:
+Antes de instalar/rodar o projeto, você precisa dos seguintes itens:
 - Node para rodar o `npm`. Você pode instala-lo [aqui](https://nodejs.org/en/). Este projeto foi construído no node versão `18.x`;
 - Um celular Android ou iOS com o aplicativo Expo instalado, ou então algum emulador Android ou iOS no computador;
 
@@ -24,7 +25,7 @@ Antes de instalar/rodar o projeto, você pode precisar dos seguintes itens:
  npm start
 ```
 
-- Execute o app no emulador ou no celular à sua escolha
+- Execute o app no emulador ou no celular à sua escolha.
 ## Construído com
 
 - [ReactJS](https://pt-br.reactjs.org/) - Biblioteca Front-end.
@@ -40,5 +41,9 @@ Antes de instalar/rodar o projeto, você pode precisar dos seguintes itens:
 Como o projeto é acadêmico, o foco realmente foi esse. Tendo isso em mente, seguem sugestões:
 
 - Técnica
-  - Dimensions API
-  - Font personalizada
+  - Reestruturação do projeto para o /src
+  - Segmentação do App.tsx (estrutura das telas e suas configurações)
+  - Ajustar nomenclatura dos index.tsx de telas e componentes para facilitar navegação / pesquisas no código
+
+-Layout
+  - Implementação de font personalizada

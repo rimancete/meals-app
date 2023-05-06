@@ -3,7 +3,7 @@ import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-naviga
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { DrawerParamList, RootStackParamList } from "App";
 
-export type CategoriesScreenNavigationProps = NativeStackScreenProps<DrawerParamList, 'MealsCategories'>;
+export type CategoriesScreenNavigationProps = NativeStackScreenProps<DrawerParamList & RootStackParamList, 'MealsCategories'>;
 export type FavoriteScreenNavigationProps = NativeStackScreenProps<DrawerParamList, 'FavoriteScreen'>;
 export type MealsOverviewScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'MealsOverview'>;
 export type MealDetailScreenNavigationProps = NativeStackScreenProps<RootStackParamList, 'MealDetail'>;
