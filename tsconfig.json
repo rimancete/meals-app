@@ -10,6 +10,7 @@
       "screens/*": ["screens/*"],
       "utils/*": ["utils/*"],
       "styles/*": ["styles/*"],
+      "store/*": ["store/*"],
     }
   }
 }

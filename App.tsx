@@ -14,6 +14,7 @@ import MealDetailScreenScreen, {
 } from "screens/MealDetailScreen";
 import theme from "styles/theme";
 import FavoriteScreen from "screens/FavoriteScreen";
+import FavoritesContextProvider from "store/context/favorites-context";
 
 export type RootStackParamList = {
   DrawerScreen: undefined;
@@ -72,42 +73,46 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="DrawerScreen"
-          screenOptions={{
-            headerStyle: { backgroundColor: theme().colors.secondary.dark },
-            headerTintColor: "white",
-            contentStyle: { backgroundColor: theme().colors.secondary.medium },
-          }}
-        >
-          <Stack.Screen
-            name="DrawerScreen"
-            component={DrawerNavigator}
-            options={{
-              // title: "All Categories",
-              headerShown: false,
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="DrawerScreen"
+            screenOptions={{
+              headerStyle: { backgroundColor: theme().colors.secondary.dark },
+              headerTintColor: "white",
+              contentStyle: {
+                backgroundColor: theme().colors.secondary.medium,
+              },
             }}
-          />
-          <Stack.Screen
-            name="MealsOverview"
-            component={MealsOverviewScreen}
-            // options={({ navigation, route }) => {
-            //   const {categoryId} = route.params;
-            //   return {
-            //     title: categoryId
-            //   };
-            // }}
-          />
-          <Stack.Screen
-            name="MealDetail"
-            component={MealDetailScreenScreen}
-            // options={{
-            //   headerRight: () => <Button title="Tap me!" />,
-            // }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="DrawerScreen"
+              component={DrawerNavigator}
+              options={{
+                // title: "All Categories",
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="MealsOverview"
+              component={MealsOverviewScreen}
+              // options={({ navigation, route }) => {
+              //   const {categoryId} = route.params;
+              //   return {
+              //     title: categoryId
+              //   };
+              // }}
+            />
+            <Stack.Screen
+              name="MealDetail"
+              component={MealDetailScreenScreen}
+              // options={{
+              //   headerRight: () => <Button title="Tap me!" />,
+              // }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }
