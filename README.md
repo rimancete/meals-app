@@ -45,5 +45,6 @@ Como o projeto é acadêmico, o foco realmente foi esse. Tendo isso em mente, se
   - Segmentação do App.tsx (estrutura das telas e suas configurações)
   - Ajustar nomenclatura dos index.tsx de telas e componentes para facilitar navegação / pesquisas no código
 
--Layout
-  - Implementação de font personalizada
+- Layout
+  - Implementação de fonte personalizada
+  - Ajustes finos na escala de imagens
