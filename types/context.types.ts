@@ -1,5 +1,5 @@
 export type FavoritesContextType = {
-    ids: string[];
-    addFavorite: (id: string) => void;
-    removeFavorite: (id: string) => void;
+    favoriteMealIds: string[];
+    addFavoriteMealIds: (id: string) => void;
+    removeFavoriteMealIds: (id: string) => void;
 }

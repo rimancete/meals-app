@@ -1,5 +1,4 @@
 import {
-  Button,
   GestureResponderEvent,
   OpaqueColorValue,
   Pressable,

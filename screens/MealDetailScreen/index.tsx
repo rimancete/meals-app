@@ -1,8 +1,9 @@
 import { useRoute } from "@react-navigation/native";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { MEALS } from "data/dummyData";
+import { FavoritesContext } from "store/context/favorites-context";
 import { MealDetailScreenNavigationProps } from "types";
 import MealDetails from "components/MealDetails";
 import SubtTitle from "components/SubTitle";
@@ -14,25 +15,34 @@ export interface MealDetailScreenParams {
 }
 
 function MealDetailScreen({ navigation }: MealDetailScreenNavigationProps) {
+  const { favoriteMealIds, removeFavoriteMealIds, addFavoriteMealIds } = useContext(FavoritesContext);
   const { mealId } = useRoute().params as MealDetailScreenParams;
 
   const selectedMeal = MEALS.find((meal) => mealId === meal.id);
 
-  const headerButtonPressHandler = () => {
-    console.log('Pressed!')
-  }
+  const mealIsFavorite = favoriteMealIds.includes(mealId);
 
-  const renderHeaderButton = () => <IconButton onPress={headerButtonPressHandler} />
-  
+  const changeFavoriteStatusHandler = () => {
+    if (mealIsFavorite) {
+      removeFavoriteMealIds(mealId)
+    } else {
+      addFavoriteMealIds(mealId)
+    }
+  };
+
+  const renderHeaderButton = () => (
+    <IconButton onPress={changeFavoriteStatusHandler} icon={mealIsFavorite ? "star" : "star-outline"} />
+  );
+
   useLayoutEffect(() => {
     // const mealTile = MEALS.find((category) => category.id === mealId)?.title;
 
     navigation.setOptions({
       // title: mealTile || "",
       title: "",
-      headerRight: renderHeaderButton
+      headerRight: renderHeaderButton,
     });
-  }, [mealId, navigation, headerButtonPressHandler]);
+  }, [mealId, navigation, changeFavoriteStatusHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -56,7 +66,7 @@ function MealDetailScreen({ navigation }: MealDetailScreenNavigationProps) {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    marginBottom: 32
+    marginBottom: 32,
   },
   image: {
     width: "100%",

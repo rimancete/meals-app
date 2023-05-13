@@ -3,9 +3,9 @@ import React, { createContext, useState } from "react";
 import { FavoritesContextType } from "types";
 
 const defaultValue: FavoritesContextType = {
-  ids: [],
-  addFavorite: () => {},
-  removeFavorite: () => {},
+  favoriteMealIds: [],
+  addFavoriteMealIds: () => {},
+  removeFavoriteMealIds: () => {},
 };
 
 export const FavoritesContext =
@@ -16,17 +16,24 @@ interface FavoritesContextProviderProps {
 }
 
 function FavoritesContextProvider({ children }: FavoritesContextProviderProps) {
-  const [ids, setIds] = useState<FavoritesContextType["ids"]>(defaultValue.ids);
-  const addFavorite = (newId: string) => setIds((ids) => [...ids, newId]);
-  const removeFavorite = (newId: string) => setIds((ids) => [...ids, newId]);
+  const [favoriteMealIds, setFavoriteMealIds] = useState<
+    FavoritesContextType["favoriteMealIds"]
+  >(defaultValue.favoriteMealIds);
+  const addFavoriteMealIds = (newId: string) =>
+    setFavoriteMealIds((currentIds) => [...currentIds, newId]);
+  const removeFavoriteMealIds = (id: string) =>
+    setFavoriteMealIds((currentIds) =>
+      currentIds.filter((currentId) => currentId !== id)
+    );
 
+  const values = {
+    favoriteMealIds,
+    addFavoriteMealIds,
+    removeFavoriteMealIds,
+  };
   return (
     <FavoritesContext.Provider
-      value={{
-        ids,
-        addFavorite,
-        removeFavorite,
-      }}
+      value={values}
     >
       {children}
     </FavoritesContext.Provider>
