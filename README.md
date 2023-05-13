@@ -1,7 +1,7 @@
 
 # Meals App
 
-Este projeto é um "Catálogo de receitas" demo, para estudo / prática de conceitos relacionados a navegação (com React Navigation), incluindo menus aninhados. E também questões mais avançadas de layout (tema, grids, orientação), utilizando React Native.
+Este projeto é um "Catálogo de receitas" demo, para estudo / prática de conceitos relacionados a navegação (com React Navigation), incluindo menus aninhados e contexto. E também questões mais avançadas de layout (tema, grids, orientação), utilizando React Native.
 
 ### Mobile Perspectiva:
 ![nav](./docs/app.gif)
